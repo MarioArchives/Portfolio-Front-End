@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom";
 import "./PageContentView.css";
 const PageContentView = () => {
   return (
     <div className="PageContentViewContainer">
-      Hello! This is the content view
+      <Outlet />
     </div>
   );
 };
