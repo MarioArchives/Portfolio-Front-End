@@ -1,0 +1,16 @@
+.HeadderContainer {
+  background-color: var(--globalWhite);
+  width: 100vw;
+  height: 5vh;
+  color: black;
+  border-bottom: 5px solid grey;
+  display: flex;
+  align-items: center;
+}
+.HeadderListItems {
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+  width: 100%;
+  gap: 5rem;
+}

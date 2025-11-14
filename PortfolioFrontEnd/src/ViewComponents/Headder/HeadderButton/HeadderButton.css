@@ -1,0 +1,37 @@
+.HeadderButton {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  background-color: var(--globalWhite);
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.HeadderButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transition: left 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.HeadderButton:hover::before {
+  left: 0;
+}
+
+.HeadderButton:hover {
+  color: white;
+}
+
+.HeadderButton * {
+  position: relative;
+  z-index: 1;
+}

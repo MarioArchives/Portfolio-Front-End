@@ -1,0 +1,6 @@
+.PageViewComponent {
+  height: 99vh;
+  width: 99.5vw;
+  border: 3px solid red;
+  overflow: hidden;
+}
