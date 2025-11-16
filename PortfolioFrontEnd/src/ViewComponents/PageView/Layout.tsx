@@ -1,7 +1,7 @@
 import "./Layout.css";
 import Headder from "../Headder/Headder";
 import PageContentView from "../PageContentView/PageContentView";
-export const PageView = () => {
+export const Layout = () => {
   return (
     <div className="PageViewComponent">
       <Headder />

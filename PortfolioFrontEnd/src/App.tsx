@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "./App.css";
-import { PageView } from "./ViewComponents/PageView/PageView";
+import { Layout } from "./ViewComponents/PageView/Layout";
+import MazeContent from "./ViewComponents/PageContentView/MazeContent";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<PageView />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/Maze" element={<MazeContent />} />
+        </Route>
       </Routes>
     </Router>
   );
