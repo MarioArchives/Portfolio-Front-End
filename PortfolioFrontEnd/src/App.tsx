@@ -1,7 +1,6 @@
-import { useState } from "react";
 import "./App.css";
 import { Layout } from "./ViewComponents/PageView/Layout";
-import MazeContent from "./ViewComponents/PageContentView/MazeContent";
+import MazeContent from "./ViewComponents/PageContentView/MazeContent/MazeContent";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {

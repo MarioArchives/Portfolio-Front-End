@@ -1,0 +1,27 @@
+:root {
+  --mazeDimensions: 90vw;
+  --mazePathCellColour: rgba(216, 164, 68, 0.961);
+  --mazeWallCellColour: rgba(0, 0, 0, 0.945);
+}
+.MazeViewContainer {
+  background-color: rgba(128, 128, 128, 0.276);
+  height: 90%;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MazeGrid {
+  background-color: rgba(255, 255, 0, 0.257);
+  height: var(--mazeDimensions);
+  max-height: 95%;
+  width: var(--mazeDimensions);
+  border: var(--mazeWallCellColour) solid 3px;
+  display: grid;
+}
+.MazeCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

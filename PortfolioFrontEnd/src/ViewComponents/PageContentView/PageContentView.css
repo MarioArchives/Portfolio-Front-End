@@ -1,35 +1,3 @@
 .PageContentViewContainer {
-  background: 
-    /* Geometric diamond pattern */ linear-gradient(
-      45deg,
-      transparent 35%,
-      rgba(255, 255, 255, 0.1) 35%,
-      rgba(255, 255, 255, 0.1) 65%,
-      transparent 65%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 35%,
-      rgba(255, 255, 255, 0.08) 35%,
-      rgba(255, 255, 255, 0.08) 65%,
-      transparent 65%
-    ),
-    /* Square grid pattern */
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 19px,
-        rgba(255, 255, 255, 0.05) 20px,
-        rgba(255, 255, 255, 0.05) 21px
-      ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 19px,
-      rgba(255, 255, 255, 0.05) 20px,
-      rgba(255, 255, 255, 0.05) 21px
-    ),
-    /* Base color */ rgb(201, 201, 113);
-  background-size: 40px 40px, 40px 40px, 20px 20px, 20px 20px, 100% 100%;
   height: 100%;
 }
