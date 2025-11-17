@@ -71,7 +71,7 @@
   background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
 
   /* More dynamic animation for a living nebula */
-  animation: nebulaDrift 250s ease-in-out infinite;
+  animation: nebulaDrift 10s ease-in-out infinite;
 }
 
 @keyframes nebulaDrift {
@@ -79,9 +79,13 @@
     background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
     filter: hue-rotate(0deg);
   }
-  100% {
+  50% {
     background-position: -150% 100%, -100% 50%, -50% 150%, -25% 200%, 25% -100%,
       0% 0%, 0% 0%, 0% 0%;
-    filter: hue-rotate(15deg);
+    filter: hue-rotate(10deg);
+  }
+  100% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    filter: hue-rotate(0deg);
   }
 }
