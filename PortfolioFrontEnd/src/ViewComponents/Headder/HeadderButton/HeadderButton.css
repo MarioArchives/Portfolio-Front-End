@@ -35,3 +35,7 @@
   position: relative;
   z-index: 1;
 }
+
+.HeadderButtonLink {
+  color: inherit;
+}

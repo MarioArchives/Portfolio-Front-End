@@ -1,7 +1,7 @@
 import "./Headder.css";
 import HeadderButton from "./HeadderButton/HeadderButton";
 const Headder = () => {
-  const headerList: string[] = ["About", "Projects", "Contact"];
+  const headerList: string[] = ["About", "Maze", "Contact", "Home"];
   return (
     <div className="HeadderContainer">
       <div className="HeadderListItems">
