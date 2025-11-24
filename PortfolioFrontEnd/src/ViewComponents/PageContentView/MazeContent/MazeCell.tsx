@@ -10,23 +10,6 @@ const borderStyle = "solid";
 const borderColor = "var(--mazeWallCellColour)";
 const borderString = `${borderWidth} ${borderStyle} ${borderColor}`;
 
-// Cell states sorted by LURD binary format (Left, Up, Right, Down)
-// 0000 = 0: no paths (solid walls) - "x"
-// 0001 = 1: down only - "↓"
-// 0010 = 2: right only - "→"
-// 0011 = 3: right + down - "┏"
-// 0100 = 4: up only - "↑"
-// 0101 = 5: up + down - "┃"
-// 0110 = 6: up + right - "┗"
-// 0111 = 7: up + right + down - "┣"
-// 1000 = 8: left only - "←"
-// 1001 = 9: left + down - "┓"
-// 1010 = 10: left + right - "━"
-// 1011 = 11: left + right + down - "┳"
-// 1100 = 12: left + up - "┛"
-// 1101 = 13: left + up + down - "┫"
-// 1110 = 14: left + up + right - "┻"
-// 1111 = 15: all directions - "╋"
 const cellStateToStyleObject: { [key: string]: React.CSSProperties } = {
   "0": { border: borderString }, // no paths
   "1": {

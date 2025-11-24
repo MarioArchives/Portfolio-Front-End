@@ -1,9 +1,10 @@
 import "./MazeContent.css";
 import MazeGrid from "./MazeGrid";
 const MazeContent = () => {
+  const size = 100;
   return (
     <div className="MazeViewContainer">
-      <MazeGrid height={100} width={100} />
+      <MazeGrid height={size} width={size} />
     </div>
   );
 };
