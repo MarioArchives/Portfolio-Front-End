@@ -5,18 +5,31 @@ import MazeCell from "./MazeCell";
 interface MazeDimensions {
   width: number;
   height: number;
+  horizontalConnectivity: number;
 }
-const handleGenerate = async (width: number, height: number) => {
-  const mazeResult = await generateMaze(width, height);
+const handleGenerate = async (
+  width: number,
+  height: number,
+  horizontalConnectivity: number
+) => {
+  const mazeResult = await generateMaze(width, height, horizontalConnectivity);
   return mazeResult.map((cellInfo) => cellInfo.state);
 };
 
-const MazeGrid: FC<MazeDimensions> = ({ height, width }) => {
+const MazeGrid: FC<MazeDimensions> = ({
+  height,
+  width,
+  horizontalConnectivity,
+}) => {
   const [mazeConfiguration, setMazeConfiguration] = useState<number[]>([]);
 
   useEffect(() => {
     const generateMazeAsync = async () => {
-      const configuration = await handleGenerate(width, height);
+      const configuration = await handleGenerate(
+        width,
+        height,
+        horizontalConnectivity
+      );
       setMazeConfiguration(configuration);
     };
     generateMazeAsync();

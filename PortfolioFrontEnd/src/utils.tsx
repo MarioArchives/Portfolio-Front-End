@@ -66,7 +66,8 @@ function getModule(): Promise<EmscriptenModule> {
 // Now you can just call this function directly!
 export async function generateMaze(
   height: number,
-  width: number
+  width: number,
+  horizontalConnectivity: number
 ): Promise<Array<{ id: number; groupId: string; state: number }>> {
   const module = await getModule();
 
@@ -74,8 +75,8 @@ export async function generateMaze(
   const ptr = module.ccall(
     "generateFullMaze",
     "number",
-    ["number", "number"],
-    [width, height] // Note: your C function takes width first, then height
+    ["number", "number", "number"],
+    [width, height, horizontalConnectivity] // Note: your C function takes width first, then height
   );
 
   // Convert the pointer to a JavaScript string
