@@ -4,12 +4,14 @@ import MazeContent from "./ViewComponents/PageContentView/MazeContent/MazeConten
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./ViewComponents/PageContentView/NotFound/NotFound";
+import PlotContentView from "./ViewComponents/PageContentView/PlotsContent/Plots";
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/Maze" element={<MazeContent />} />
+          <Route path="/Plots" element={<PlotContentView />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -3,7 +3,11 @@ import "./PageContentView.css";
 const PageContentView = () => {
   return (
     <div className="PageContentViewContainer">
-      <Outlet />
+      <div className="ContentView">
+        <div className="ViewContainer">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

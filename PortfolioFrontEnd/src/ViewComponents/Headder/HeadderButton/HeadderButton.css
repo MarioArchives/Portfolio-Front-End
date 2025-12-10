@@ -1,10 +1,13 @@
 .HeadderButton {
-  height: 2rem;
+  height: 2.5rem;
+  width: 7rem;
+  justify-content: center;
+  font-size: large;
   display: flex;
   align-items: center;
-  border: 2px solid black;
-  background-color: var(--globalWhite);
-  color: black;
+  border: 2px solid var(--globalYellow);
+  background-color: var(--space-dark);
+  color: var(--globalYellow);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   position: relative;
@@ -14,21 +17,21 @@
 .HeadderButton::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
+  top: -100%;
+  left: 0%;
   width: 100%;
   height: 100%;
-  background-color: black;
-  transition: left 0.3s ease-in-out;
+  background-color: rgba(216, 164, 68, 0.961);
+  transition: top 0.3s ease-in-out;
   z-index: 0;
 }
 
 .HeadderButton:hover::before {
-  left: 0;
+  top: 0;
 }
 
 .HeadderButton:hover {
-  color: white;
+  color: var(--space-dark);
 }
 
 .HeadderButton * {
@@ -38,4 +41,5 @@
 
 .HeadderButtonLink {
   color: inherit;
+  font-weight: 850;
 }

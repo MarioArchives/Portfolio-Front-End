@@ -1,3 +1,20 @@
 .PageContentViewContainer {
   height: 100%;
 }
+
+.ContentView {
+  height: 100%;
+  width: 100%;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+}
+.ViewContainer {
+  margin-top: 1rem;
+  width: 90vw;
+  height: auto;
+  min-height: 95vh;
+  background-color: var(--view-container-colour);
+  justify-items: center;
+  align-content: center;
+}

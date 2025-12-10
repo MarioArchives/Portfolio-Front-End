@@ -1,3 +1,4 @@
+
 import "./HeadderButton.css";
 import { Link } from "react-router-dom";
 
@@ -8,6 +9,7 @@ interface HeadderButtonProps {
 const textToPage: { [key: string]: string } = {
   Home: "/",
   Maze: "/Maze",
+  Plots: "/Plots",
 };
 
 const handleClick = (text: string) => {

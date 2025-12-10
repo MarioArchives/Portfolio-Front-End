@@ -1,3 +1,46 @@
 :root {
   --globalWhite: rgba(230, 226, 223, 0.995);
+  --globalYellow: rgba(216, 164, 68, 0.961);
+  /* Layout dimensions */
+  --layout-height: 99vh;
+  --layout-width: 99.5vw;
+
+  /* Warm yellow and gold palette */
+  --nebula-core: rgba(255, 215, 0, 0.4); /* Gold core */
+  --nebula-gas-1: rgba(255, 140, 0, 0.25); /* Dark orange gas */
+  --nebula-gas-2: rgba(218, 165, 32, 0.2); /* Goldenrod gas */
+  --nebula-haze: rgba(255, 165, 0, 0.1); /* Faint orange haze */
+  --space-dark: rgb(25, 20, 15); /* Deep warm space background */
+  --star-color: rgba(255, 245, 225, 0.7); /* Warm white stars */
+
+  /* Pixel grid for retro feel */
+  --pixel-grid-color: rgba(255, 255, 255, 0.01);
+  --pixel-grid-size: 2px;
+
+  /* Nebula cloud dimensions */
+  --nebula-cloud-large: 800px 800px;
+  --nebula-cloud-medium: 500px 500px;
+  --nebula-cloud-small: 300px 300px;
+  --star-field-size: 150px 150px;
+  --base-size: 100% 100%;
+  --view-container-colour: rgba(216, 164, 68, 0.5);
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --mazeDimensions: 50vw;
+  --mazePathCellColour: var(var(--globalYellow));
+  --mazeWallCellColour: rgba(0, 0, 0, 0.945);
+  --mazeCellBorderSize: 1px;
 }

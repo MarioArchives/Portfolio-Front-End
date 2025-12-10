@@ -1,25 +1,12 @@
-:root {
-  --mazeDimensions: 90vw;
-  --mazePathCellColour: rgba(216, 164, 68, 0.961);
-  --mazeWallCellColour: rgba(0, 0, 0, 0.945);
-}
-.MazeViewContainer {
-  background-color: rgba(128, 128, 128, 0.276);
-  height: 90%;
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .MazeGrid {
-  background-color: rgba(255, 255, 0, 0.257);
+  margin: 0px;
+  background-color: var(--globalYellow);
   height: var(--mazeDimensions);
-  max-height: 95%;
   width: var(--mazeDimensions);
   display: grid;
-  overflow: hidden;
   position: relative;
+  border: 3px solid var(--space-dark);
+  margin-bottom: 2rem;
 }
 
 .MazeCell {
@@ -28,4 +15,58 @@
   align-items: center;
   background-color: var(--mazePathCellColour);
   margin: 0px;
+  border-bottom: 0px;
+  margin-right: 0px;
+}
+.ExitCell {
+  background-color: var(--globalWhite);
+  border-right: var(--mazeCellBorderSize) solid var(--mazeWallCellColour);
+}
+.StartCell {
+  background-color: var(--globalWhite);
+  border-left: var(--mazeCellBorderSize) solid var(--mazeWallCellColour);
+}
+.MazeSliderContainer {
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+.MazeSliderContainer p {
+  font-weight: 900;
+  margin: 0px;
+}
+.MazeSliderContainer label input[type="range"] {
+  background: var(--globalYellow);
+}
+
+.MazeSliderContainer input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: var(--space-dark); /* Dark track */
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.MazeSliderContainer input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--globalYellow);
+  cursor: pointer;
+  border: 2px solid var(--space-dark);
+}
+
+.MazeSliderContainer input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--globalYellow);
+  cursor: pointer;
+  border: 2px solid var(--space-dark);
 }

@@ -8,7 +8,14 @@ export const WASM_CONFIG = {
   wasmPath: "/compiledFunctions/maze.wasm",
 };
 
-// mazeModule.ts
+interface CellInformation {
+  id: number;
+  groupId: string;
+  state: number;
+  is_start: number;
+  is_end: number;
+}
+
 interface EmscriptenModule {
   ccall: (
     funcName: string,
@@ -63,28 +70,36 @@ function getModule(): Promise<EmscriptenModule> {
   return modulePromise;
 }
 
-// Now you can just call this function directly!
 export async function generateMaze(
   height: number,
   width: number,
   horizontalConnectivity: number
-): Promise<Array<{ id: number; groupId: string; state: number }>> {
+): Promise<Array<CellInformation>> {
   const module = await getModule();
 
-  // Get the pointer to the JSON string
   const ptr = module.ccall(
     "generateFullMaze",
     "number",
     ["number", "number", "number"],
-    [width, height, horizontalConnectivity] // Note: your C function takes width first, then height
+    [width, height, horizontalConnectivity]
   );
 
-  // Convert the pointer to a JavaScript string
   const jsonString = module.UTF8ToString(ptr);
 
-  // Free the allocated memory
   module._free(ptr);
 
-  // Parse the JSON string and return the result
   return JSON.parse(jsonString);
+}
+export async function testMazeSpeed(
+  updateMethod: number,
+  dimensions: number
+): Promise<number> {
+  const mod = await getModule();
+  const timeTaken: number = mod.ccall(
+    "test_method_speed",
+    "number",
+    ["number", "number"],
+    [updateMethod, dimensions]
+  );
+  return timeTaken;
 }
