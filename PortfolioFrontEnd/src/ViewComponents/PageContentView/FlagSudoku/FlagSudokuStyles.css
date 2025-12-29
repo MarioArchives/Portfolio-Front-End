@@ -1,0 +1,131 @@
+.SudokuGrid {
+    display: grid;
+    gap: 1rem;
+}
+
+.SudokuCell {
+    border: 1px solid black;
+    width: var(--sudoku-cell-size);
+    height: var(--sudoku-cell-size);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    align-items: center;
+}
+
+.FlagCellHolder {
+    align-content: center;
+    height: 100%;
+}
+
+.SudokuFlagSelectionHolder {
+    width: 100%;
+}
+
+.SudokuFlagSelection {
+    height: 3rem;
+    width: 100%;
+}
+
+.SudokuFlagContainer {
+    width: 100%;
+}
+
+
+.SudokuColumnHeadders {
+    display: flex;
+    justify-content: space-around;
+    width: calc(3*var(--sudoku-cell-size));
+    gap: 1rem;
+}
+
+.SudokuRowHeadersAndGrid {
+    display: flex;
+}
+
+.SudokuRowHeaders {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 2rem;
+    gap: 6rem;
+
+}
+
+.SudokuRotatedCell {
+    transform: rotate(-90deg);
+    width: 8rem;
+}
+
+
+.SudokuFlagSelectionHolder {
+    display: inline-block;
+    position: relative;
+}
+
+/* Dropdown */
+.SudokuFlagSelection {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: var(--space-dark);
+    color: var(--globalYellow);
+
+    font-family: "Press Start 2P", monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    padding: 12px 40px 12px 14px;
+
+    border: 2px solid var(--globalYellow);
+
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 0, 0.8),
+        4px 4px 0 0 rgba(216, 164, 68, 0.8),
+        0 0 12px var(--nebula-core);
+
+    cursor: pointer;
+    outline: none;
+}
+
+/* Pixel arrow */
+.SudokuFlagSelectionHolder::after {
+    content: "▼";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    font-size: 10px;
+    color: var(--globalYellow);
+
+    text-shadow: 0 0 4px var(--nebula-core);
+}
+
+/* Hover */
+.SudokuFlagSelection:hover {
+    background-color: rgba(30, 24, 18, 1);
+
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 0, 0.9),
+        6px 6px 0 0 rgba(216, 164, 68, 0.9),
+        0 0 16px var(--nebula-core);
+}
+
+/* Focus */
+.SudokuFlagSelection:focus {
+    box-shadow:
+        0 0 0 2px var(--globalYellow),
+        6px 6px 0 0 var(--globalYellow),
+        0 0 20px var(--nebula-core);
+}
+
+/* Options */
+.SudokuFlagSelection option {
+    background-color: var(--space-dark);
+    color: var(--globalYellow);
+}

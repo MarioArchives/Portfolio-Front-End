@@ -1,0 +1,105 @@
+.NotFoundView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+/* Floating signal panel */
+.NotFoundPanel {
+    position: relative;
+    top: -0.5rem;
+    text-align: center;
+
+    background: linear-gradient(180deg,
+            rgba(25, 20, 15, 0.85),
+            rgba(15, 12, 10, 0.9));
+
+    border: 2px solid var(--globalYellow);
+
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 0, 0.8),
+        10px 10px 0 rgba(216, 164, 68, 0.7),
+        0 0 40px var(--nebula-core);
+
+    backdrop-filter: blur(2px);
+
+    animation: signalDrift 8s ease-in-out infinite;
+}
+
+/* Big pixel 404 */
+.NotFoundCode {
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: 4px;
+
+    color: var(--globalYellow);
+
+    text-shadow:
+        0 0 8px var(--nebula-core),
+        4px 4px 0 rgba(0, 0, 0, 0.8);
+
+    margin-bottom: 1.5rem;
+}
+
+/* Main message */
+.NotFoundMessage {
+    font-family: "Press Start 2P", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+
+    color: var(--globalWhite);
+    margin-bottom: 1rem;
+}
+
+/* Subtext */
+.NotFoundSubtext {
+    font-size: 0.9rem;
+    color: rgba(255, 245, 225, 0.6);
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* Pixel grid overlay inside panel */
+.NotFoundPanel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background-image:
+        repeating-linear-gradient(0deg,
+            var(--pixel-grid-color),
+            var(--pixel-grid-color) 1px,
+            transparent 1px,
+            transparent var(--pixel-grid-size)),
+        repeating-linear-gradient(90deg,
+            var(--pixel-grid-color),
+            var(--pixel-grid-color) 1px,
+            transparent 1px,
+            transparent var(--pixel-grid-size));
+}
+
+/* Gentle drift — complements nebulaDrift */
+@keyframes signalDrift {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-6px) translateX(4px);
+    }
+}
+
+.NotFoundMessage::after {
+    content: " ▮";
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}

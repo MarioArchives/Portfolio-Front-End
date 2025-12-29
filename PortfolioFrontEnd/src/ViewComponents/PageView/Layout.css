@@ -1,67 +1,58 @@
 .PageLayout {
-  height: var(--layout-height);
-  width: var(--layout-width);
-  overflow-y: auto;
-  overflow-x: hidden;
-  background: 
-    /* Organic Nebula Clouds */ radial-gradient(
-      ellipse at 20% 80%,
-      var(--nebula-core),
-      var(--nebula-gas-1) 50%,
-      transparent 80%
-    ),
-    radial-gradient(
-      ellipse at 75% 30%,
-      var(--nebula-gas-2),
-      var(--nebula-haze) 40%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse at 90% 90%,
-      var(--nebula-gas-1),
-      var(--nebula-haze) 50%,
-      transparent 80%
-    ),
-    /* Tiny Stars */
-      radial-gradient(circle at 20% 30%, var(--star-color) 1px, transparent 1px),
-    radial-gradient(circle at 80% 20%, var(--star-color) 1px, transparent 1px),
-    /* Pixel Grid Overlay */
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent calc(var(--pixel-grid-size) - 1px),
-        var(--pixel-grid-color) var(--pixel-grid-size)
-      ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent calc(var(--pixel-grid-size) - 1px),
-      var(--pixel-grid-color) var(--pixel-grid-size)
-    ),
-    /* Deep Space Background */ var(--space-dark);
+    height: var(--layout-height);
+    width: var(--layout-width);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background:
+        /* Organic Nebula Clouds */
+        radial-gradient(ellipse at 20% 80%,
+            var(--nebula-core),
+            var(--nebula-gas-1) 50%,
+            transparent 80%),
+        radial-gradient(ellipse at 75% 30%,
+            var(--nebula-gas-2),
+            var(--nebula-haze) 40%,
+            transparent 70%),
+        radial-gradient(ellipse at 90% 90%,
+            var(--nebula-gas-1),
+            var(--nebula-haze) 50%,
+            transparent 80%),
+        /* Pixel Grid Overlay */
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent calc(var(--pixel-grid-size) - 1px),
+            var(--pixel-grid-color) var(--pixel-grid-size)),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent calc(var(--pixel-grid-size) - 1px),
+            var(--pixel-grid-color) var(--pixel-grid-size)),
+        /* Deep Space Background */
+        var(--space-dark);
 
-  background-size: var(--nebula-cloud-large), var(--nebula-cloud-medium),
-    var(--nebula-cloud-small), var(--star-field-size), var(--star-field-size),
-    100% 100%, 100% 100%, var(--base-size);
+    background-size: var(--nebula-cloud-large), var(--nebula-cloud-medium),
+        var(--nebula-cloud-small), var(--star-field-size), var(--star-field-size),
+        100% 100%, 100% 100%, var(--base-size);
 
-  background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
 
-  /* More dynamic animation for a living nebula */
-  animation: nebulaDrift 10s ease-in-out infinite;
+    /* More dynamic animation for a living nebula */
+    animation: nebulaDrift 300s ease-in-out infinite;
 }
 
 @keyframes nebulaDrift {
-  0% {
-    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-    filter: hue-rotate(0deg);
-  }
-  50% {
-    background-position: -150% 100%, -100% 50%, -50% 150%, -25% 200%, 25% -100%,
-      0% 0%, 0% 0%, 0% 0%;
-    filter: hue-rotate(10deg);
-  }
-  100% {
-    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-    filter: hue-rotate(0deg);
-  }
+    0% {
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        background-position: -150% 100%, -100% 50%, -50% 150%, -25% 200%, 25% -100%,
+            0% 0%, 0% 0%, 0% 0%;
+        filter: hue-rotate(10deg);
+    }
+
+    100% {
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        filter: hue-rotate(0deg);
+    }
 }

@@ -1,105 +1,106 @@
 export const generateRandomMazeConfiguration = (size: number): number[] => {
-  return Array.from({ length: size }, () => Math.round(Math.random() * 15));
+    return Array.from({ length: size }, () => Math.round(Math.random() * 15));
 };
 
 // Configure the paths (set these at app startup if needed)
 export const WASM_CONFIG = {
-  jsPath: "/compiledFunctions/maze.js",
-  wasmPath: "/compiledFunctions/maze.wasm",
+    jsPath: "/compiledFunctions/maze.js",
+    wasmPath: "/compiledFunctions/maze.wasm",
 };
 
 interface CellInformation {
-  id: number;
-  groupId: string;
-  state: number;
-  is_start: number;
-  is_end: number;
+    id: number;
+    groupId: string;
+    state: number;
+    is_start: number;
+    is_end: number;
+    leads_to_exit?: number;
 }
 
 interface EmscriptenModule {
-  ccall: (
-    funcName: string,
-    returnType: string,
-    argTypes: string[],
-    args: any[]
-  ) => any;
-  UTF8ToString: (ptr: number) => string;
-  _free: (ptr: number) => void;
+    ccall: (
+        funcName: string,
+        returnType: string,
+        argTypes: string[],
+        args: any[]
+    ) => any;
+    UTF8ToString: (ptr: number) => string;
+    _free: (ptr: number) => void;
 }
 
 declare global {
-  interface Window {
-    Module: any; // Changed from function to any for flexibility
-  }
-  var Module: any; // Global Module variable
+    interface Window {
+        Module: any; // Changed from function to any for flexibility
+    }
+    var Module: any; // Global Module variable
 }
 
 let modulePromise: Promise<EmscriptenModule> | null = null;
 
 // Load the module once and cache it
 function getModule(): Promise<EmscriptenModule> {
-  if (modulePromise) {
-    return modulePromise; // Return cached promise
-  }
+    if (modulePromise) {
+        return modulePromise; // Return cached promise
+    }
 
-  modulePromise = new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = WASM_CONFIG.jsPath;
+    modulePromise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = WASM_CONFIG.jsPath;
 
-    script.onload = () => {
-      const mod = window.Module || (globalThis as any).Module;
+        script.onload = () => {
+            const mod = window.Module || (globalThis as any).Module;
 
-      if (!mod) {
-        reject(new Error("Module not found after loading maze.js"));
-        return;
-      }
+            if (!mod) {
+                reject(new Error("Module not found after loading maze.js"));
+                return;
+            }
 
-      // ALWAYS wait for onRuntimeInitialized - the WASM needs to fully load
-      const originalCallback = mod.onRuntimeInitialized;
-      mod.onRuntimeInitialized = () => {
-        if (originalCallback) originalCallback();
-        resolve(mod);
-      };
-    };
+            // ALWAYS wait for onRuntimeInitialized - the WASM needs to fully load
+            const originalCallback = mod.onRuntimeInitialized;
+            mod.onRuntimeInitialized = () => {
+                if (originalCallback) originalCallback();
+                resolve(mod);
+            };
+        };
 
-    script.onerror = () => reject(new Error("Failed to load maze.js"));
+        script.onerror = () => reject(new Error("Failed to load maze.js"));
 
-    document.body.appendChild(script);
-  });
+        document.body.appendChild(script);
+    });
 
-  return modulePromise;
+    return modulePromise;
 }
 
 export async function generateMaze(
-  height: number,
-  width: number,
-  horizontalConnectivity: number
+    height: number,
+    width: number,
+    horizontalConnectivity: number
 ): Promise<Array<CellInformation>> {
-  const module = await getModule();
+    const module = await getModule();
 
-  const ptr = module.ccall(
-    "generateFullMaze",
-    "number",
-    ["number", "number", "number"],
-    [width, height, horizontalConnectivity]
-  );
+    const ptr = module.ccall(
+        "generateFullMaze",
+        "number",
+        ["number", "number", "number"],
+        [width, height, horizontalConnectivity]
+    );
 
-  const jsonString = module.UTF8ToString(ptr);
+    const jsonString = module.UTF8ToString(ptr);
 
-  module._free(ptr);
+    module._free(ptr);
 
-  return JSON.parse(jsonString);
+    return JSON.parse(jsonString);
 }
 export async function testMazeSpeed(
-  updateMethod: number,
-  dimensions: number
+    updateMethod: number,
+    dimensions: number
 ): Promise<number> {
-  const mod = await getModule();
-  const timeTaken: number = mod.ccall(
-    "test_method_speed",
-    "number",
-    ["number", "number"],
-    [updateMethod, dimensions]
-  );
-  return timeTaken;
+    const mod = await getModule();
+    const timeTaken: number = mod.ccall(
+        "test_method_speed",
+        "number",
+        ["number", "number"],
+        [updateMethod, dimensions]
+    );
+    return timeTaken;
 }

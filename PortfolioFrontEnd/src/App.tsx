@@ -5,18 +5,21 @@ import MazeContent from "./ViewComponents/PageContentView/MazeContent/MazeConten
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./ViewComponents/PageContentView/NotFound/NotFound";
 import PlotContentView from "./ViewComponents/PageContentView/PlotsContent/Plots";
+import FlagSudokuView from "./ViewComponents/PageContentView/FlagSudoku/FlagSudoku.tsx"
+
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/Maze" element={<MazeContent />} />
-          <Route path="/Plots" element={<PlotContentView />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route path="/Maze" element={<MazeContent />} />
+                    <Route path="/Plots" element={<PlotContentView />} />
+                    <Route path="/Flags" element={<FlagSudokuView/>} />
+                    <Route path="*" element={<NotFound />} />
+                </Route>
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
