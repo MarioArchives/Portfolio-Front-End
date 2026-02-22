@@ -3,6 +3,7 @@
     width: var(--layout-width);
     overflow-y: auto;
     overflow-x: hidden;
+
     background:
         /* Organic Nebula Clouds */
         radial-gradient(ellipse at 20% 80%,

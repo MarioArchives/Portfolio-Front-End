@@ -1,5 +1,5 @@
 import "./Layout.css";
-import "./Layout.scss";
+import "./shooting-stars.scss";
 import Headder from "../Headder/Headder";
 import PageContentView from "../PageContentView/PageContentView";
 
@@ -28,7 +28,7 @@ const generateShootingStar = (index: number) => {
         '--start-y': `${startY}vh`,
         '--end-x': `${endX}vw`,
         '--end-y': `${endY}vh`,
-        '--duration': `${Math.random() * 3 + 7}s`, // 2-5 seconds
+        '--duration': `${Math.random() * 5 + 10}s`,
         '--delay': `${Math.random() * 10}s`, // 0-10s delay
         '--flash-delay': `${Math.random() * 8000 + 500}ms`, // 0.5-8.5s
 
@@ -40,16 +40,18 @@ export const Layout = () => {
 
     return (
         <div className="PageLayout">
-            {[...Array(numFireflies)].map((_, i) => (
-                <div
-                    key={i}
-                    className="shooting-star"
-                    style={generateShootingStar(i)}
-                />
-            ))}
-
+            <div className="shooting-star-holder">
+                {[...Array(numFireflies)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="shooting-star"
+                        style={generateShootingStar(i)}
+                    />
+                ))}
+            </div>
             <Headder />
             <PageContentView />
         </div>
     );
 };
+

@@ -1,12 +1,23 @@
+export interface EntityEntry {
+    name: string;   // the "country" field used as the cell identifier
+    image?: string; // optional URL for a custom image
+}
+
 export interface GridProps {
     size: number;
-    gridRules: string[]
+    gridRules: string[];  // [col rules..., row rules...] — used to derive per-cell rules
+    ndjson?: string;      // raw NDJSON data passed to WASM for validation
+    entities?: EntityEntry[]; // when set, drives the dropdown instead of countries_info.json
 }
 
 export interface CellProps {
     id: number;
-    handleCellFlagChange: (id: number, code: string) => void;
-    isCorrect: boolean | null
+    handleCellFlagChange: (id: number, name: string, correct: boolean | null) => void;
+    isCorrect: boolean | null;
+    chosenNames: string[];
+    selectedName: string;
+    validateAnswer?: (name: string) => Promise<boolean | null>;
+    entities?: EntityEntry[]; // when set, drives the dropdown and image
 }
 
 export interface HeadderProps {
@@ -42,6 +53,7 @@ interface FlagFeatures {
 
 export interface CountryFlag {
     country: string;
+    country_code: string;
     flag_features: FlagFeatures;
 }
 

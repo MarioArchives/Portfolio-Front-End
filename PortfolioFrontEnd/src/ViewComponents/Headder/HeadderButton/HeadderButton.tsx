@@ -10,6 +10,7 @@ const textToPage: { [key: string]: string } = {
   Home: "/",
   Maze: "/Maze",
   Plots: "/Plots",
+  JsonStore: "/JsonStore",
 };
 
 const handleClick = (text: string) => {

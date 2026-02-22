@@ -1,0 +1,292 @@
+.json-store {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  color: var(--globalWhite);
+}
+
+.json-store h1 {
+  color: var(--globalYellow);
+  margin-bottom: 1rem;
+}
+
+.json-store h2 {
+  font-size: 1.2rem;
+  color: var(--globalYellow);
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Submit section */
+.json-store__submit {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.json-store__label-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(216, 164, 68, 0.4);
+  border-radius: 6px;
+  color: var(--globalWhite);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.json-store__label-input:focus {
+  border-color: var(--globalYellow);
+}
+
+.json-store__textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(216, 164, 68, 0.4);
+  border-radius: 6px;
+  color: var(--globalWhite);
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-family: "Courier New", monospace;
+  resize: vertical;
+  min-height: 140px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.json-store__textarea:focus {
+  border-color: var(--globalYellow);
+}
+
+.json-store__error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.json-store__btn {
+  align-self: flex-end;
+  background: var(--globalYellow);
+  color: var(--space-dark);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.json-store__btn:hover {
+  opacity: 0.85;
+}
+
+/* Main two-column layout */
+.json-store__main {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  gap: 1.5rem;
+  min-height: 400px;
+}
+
+/* Sidebar list */
+.json-store__list {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.json-store__empty {
+  color: rgba(230, 226, 223, 0.4);
+  font-size: 0.9rem;
+}
+
+.json-store__list-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(216, 164, 68, 0.2);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.json-store__list-item:hover {
+  background: rgba(216, 164, 68, 0.08);
+  border-color: rgba(216, 164, 68, 0.5);
+}
+
+.json-store__list-item--active {
+  background: rgba(216, 164, 68, 0.15);
+  border-color: var(--globalYellow);
+}
+
+.json-store__list-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 1.5rem;
+}
+
+.json-store__list-date {
+  font-size: 0.75rem;
+  color: rgba(230, 226, 223, 0.5);
+  margin-top: 0.2rem;
+}
+
+.json-store__delete-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: rgba(230, 226, 223, 0.4);
+  font-size: 0.75rem;
+  padding: 0.1rem 0.3rem;
+  cursor: pointer;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+
+.json-store__delete-btn:hover {
+  color: #ff6b6b;
+}
+
+/* Viewer */
+.json-store__viewer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.json-store__pre {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(216, 164, 68, 0.25);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  color: var(--globalWhite);
+  overflow: auto;
+  flex: 1;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.json-store__copy-btn {
+  background: transparent;
+  border: 1px solid var(--globalYellow);
+  color: var(--globalYellow);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.json-store__copy-btn:hover {
+  background: rgba(216, 164, 68, 0.15);
+}
+
+/* ─── Sudoku section ─────────────────────────────────────────────── */
+
+.json-store__sudoku-section {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.json-store__btn--sudoku {
+  align-self: flex-start;
+}
+
+.json-store__btn--sudoku:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Grid */
+.sudoku {
+  overflow-x: auto;
+}
+
+.sudoku__note {
+  font-size: 0.8rem;
+  color: rgba(230, 226, 223, 0.5);
+  margin: 0 0 0.75rem 0;
+}
+
+.sudoku__grid {
+  display: grid;
+  gap: 3px;
+  width: fit-content;
+}
+
+.sudoku__corner {
+  background: transparent;
+}
+
+.sudoku__col-header {
+  background: rgba(216, 164, 68, 0.2);
+  border: 1px solid rgba(216, 164, 68, 0.4);
+  border-radius: 4px;
+  color: var(--globalYellow);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.4rem 0.5rem;
+  text-align: center;
+  min-width: 90px;
+  word-break: break-word;
+}
+
+.sudoku__row-header {
+  background: rgba(216, 164, 68, 0.2);
+  border: 1px solid rgba(216, 164, 68, 0.4);
+  border-radius: 4px;
+  color: var(--globalYellow);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.sudoku__cell {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(216, 164, 68, 0.2);
+  border-radius: 4px;
+  color: var(--globalWhite);
+  font-size: 0.8rem;
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  min-width: 90px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.sudoku__cell:hover {
+  background: rgba(216, 164, 68, 0.1);
+}

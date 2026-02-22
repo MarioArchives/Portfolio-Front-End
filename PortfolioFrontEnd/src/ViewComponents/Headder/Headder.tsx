@@ -2,7 +2,7 @@ import "./Headder.css";
 import HeadderButton from "./HeadderButton/HeadderButton";
 const Headder = () => {
   //To update the link also update the dictionary in HeadderButtons
-  const headerList: string[] = ["About", "Maze", "Contact", "Home", "Plots"];
+  const headerList: string[] = ["About", "Maze", "Contact", "Home", "Plots", "JsonStore"];
   return (
     <div className="HeadderContainer">
       <div className="HeadderListItems">
