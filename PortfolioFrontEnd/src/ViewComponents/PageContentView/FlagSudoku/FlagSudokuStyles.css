@@ -69,7 +69,7 @@
 
     font-family: "Press Start 2P", monospace;
     font-size: 20px;
-    color: var(--globalYellow);
+    color: var(--globalWhite);
     letter-spacing: 1px;
     line-height: 1.6;
 
@@ -87,7 +87,7 @@
 .SudokuRotatedCell {
     font-family: "Press Start 2P", monospace;
     font-size: 20px;
-    color: var(--globalYellow);
+    color: var(--globalWhite);
     letter-spacing: 1px;
     line-height: 1.6;
 
@@ -212,15 +212,15 @@
 .SolutionBox__table {
     border-collapse: collapse;
     font-family: "Press Start 2P", monospace;
-    font-size: 10px;
-    color: var(--globalYellow);
+    font-size: 20px;
+    color: var(--globalWhite);
 }
 
 .SolutionBox__col-header,
 .SolutionBox__row-header {
     padding: 8px 12px;
     background-color: rgba(216, 164, 68, 0.1);
-    border: 1px solid var(--globalYellow);
+    border: 1px solid var(--globalWhite);
     text-align: center;
     white-space: nowrap;
 }
@@ -231,7 +231,7 @@
 
 .SolutionBox__cell {
     padding: 8px 14px;
-    border: 1px solid rgba(216, 164, 68, 0.4);
+    border: 1px solid var(--globalWhite);
     text-align: center;
     white-space: nowrap;
 }
