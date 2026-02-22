@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./JsonStore.css";
 import { generateSudokuFromJson } from "../../../utils";
+import JsonSubmitForm from "./JsonSubmitForm";
+import JsonEntryList from "./JsonEntryList";
+import JsonViewer from "./JsonViewer";
 
 interface StoredEntry {
     id: string;
@@ -109,98 +112,29 @@ const JsonStore = () => {
     return (
         <div className="json-store">
             <h1>JSON Store</h1>
-
-            <section className="json-store__submit">
-                <input
-                    className="json-store__label-input"
-                    type="text"
-                    placeholder="Label (optional)"
-                    value={label}
-                    onChange={(e) => setLabel(e.target.value)}
-                />
-                <textarea
-                    className="json-store__textarea"
-                    placeholder='Paste your JSON here — one object per line (NDJSON) for sudoku generation'
-                    value={input}
-                    onChange={(e) => {
-                        setInput(e.target.value);
-                        setError(null);
-                    }}
-                    spellCheck={false}
-                />
-                {error && <p className="json-store__error">{error}</p>}
-                <button className="json-store__btn" onClick={handleSubmit}>
-                    Save JSON
-                </button>
-            </section>
-
+            <JsonSubmitForm
+                label={label}
+                input={input}
+                error={error}
+                onLabelChange={setLabel}
+                onInputChange={(value) => { setInput(value); setError(null); }}
+                onSubmit={handleSubmit}
+            />
             <div className="json-store__main">
-                <aside className="json-store__list">
-                    <h2>Saved Entries</h2>
-                    {entries.length === 0 && (
-                        <p className="json-store__empty">No entries yet.</p>
-                    )}
-                    {entries.map((entry) => (
-                        <div
-                            key={entry.id}
-                            className={`json-store__list-item${selected?.id === entry.id ? " json-store__list-item--active" : ""}`}
-                            onClick={() => setSelected(entry)}
-                        >
-                            <span className="json-store__list-label">{entry.label}</span>
-                            <span className="json-store__list-date">
-                                {new Date(entry.savedAt).toLocaleString()}
-                            </span>
-                            <button
-                                className="json-store__delete-btn"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleDelete(entry.id);
-                                }}
-                            >
-                                ✕
-                            </button>
-                        </div>
-                    ))}
-                </aside>
-
-                <section className="json-store__viewer">
-                    <h2>
-                        {selected ? selected.label : "Select an entry"}
-                        {selected && (
-                            <button
-                                className="json-store__copy-btn"
-                                onClick={() => handleCopy(selected)}
-                            >
-                                {copied ? "Copied!" : "Copy"}
-                            </button>
-                        )}
-                    </h2>
-
-                    {selected ? (
-                        <>
-                            <div className="json-store__sudoku-section">
-                                <button
-                                    className="json-store__btn json-store__btn--sudoku"
-                                    onClick={handleGenerateSudoku}
-                                    disabled={sudokuLoading}
-                                >
-                                    {sudokuLoading ? "Generating…" : "Generate Sudoku"}
-                                </button>
-                                {sudokuError && (
-                                    <p className="json-store__error">Error: {sudokuError}</p>
-                                )}
-                            </div>
-
-                            <pre className="json-store__pre">
-                                {JSON.stringify(selected.data, null, 2)}
-                            </pre>
-                        </>
-                    ) : (
-                        <p className="json-store__empty">
-                            Submit JSON on the left and select an entry to view it here.
-                        </p>
-                    )}
-                </section>
+                <JsonEntryList
+                    entries={entries}
+                    selectedId={selected?.id ?? null}
+                    onSelect={setSelected}
+                    onDelete={handleDelete}
+                />
+                <JsonViewer
+                    selected={selected}
+                    copied={copied}
+                    sudokuLoading={sudokuLoading}
+                    sudokuError={sudokuError}
+                    onCopy={handleCopy}
+                    onGenerateSudoku={handleGenerateSudoku}
+                />
             </div>
         </div>
     );
